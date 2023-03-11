@@ -1,4 +1,4 @@
-# Text-to-svg generator
+# Text-To-Svg Generator
 
 Paris Gen AI Hackathon
 
