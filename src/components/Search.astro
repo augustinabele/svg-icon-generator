@@ -1,7 +1,6 @@
 ---
 export interface Props {}
 ---
-
 <div class="pt-8 flex items-center min-w-756px group">
   <label for="search" class="absolute top-0 left-0">Generate unique SVG using AI</label>
   <div class="relative w-full">
@@ -38,11 +37,7 @@ export interface Props {}
 		type="button"
     class="relative inline-flex text-white/70 items-center ring-4 ring-#0D0C0F/60 bg-#0D0C0F/20 hover:ring-white hover:bg-white/95 hover:shadow-xl hover:shadow-#847996 justify-center px-8 py-3 ml-2 overflow-hidden text-md font-bold hover:text-black rounded-4 transition-all duration-600"
   >
-		<!-- <span
-			class="relative px-5 py-4 transition-all ease-in duration-75 bg-dark rounded-md group-hover:bg-opacity-0 text-white w-40"
-		> -->
-      Generate
-    </span>
+    Generate
   </button>
 </div>
 
@@ -50,27 +45,28 @@ export interface Props {}
 </div>
 
 <script>
-  import { fetchIconFromPrompt } from "../services/generate";
-  const button = document.getElementById("button");
-	const input = document.getElementById("search") as HTMLInputElement;
-	const results = document.getElementById("results");
-	var generatedSvg = [];
-	
-	input.addEventListener("keypress", function(event) {
-		if (event.key === "Enter") {
-			event.preventDefault();
-			button.click();
-		}
-	});
-	
-  button.addEventListener("click", () => fetchAndDisplay(input.value));
-	
-	const fetchAndDisplay = async (promt: string) => {
-		results.innerHTML = '';
-		generatedSvg = await fetchIconFromPrompt(input.value);
-		generatedSvg.map((svg) => results.innerHTML += '<div class="w-full h-full">' + svg + '</div>');
-	};
+import { fetchIconsFromPrompt } from "../services/generate";
 
+const button = document.getElementById("button");
+const input = document.getElementById("search") as HTMLInputElement;
+const results = document.getElementById("results");
+var generatedSvg = [];
+
+input.addEventListener("keypress", function(event) {
+  if (event.key === "Enter") {
+    event.preventDefault();
+    button.click();
+  }
+});
+
+button.addEventListener("click", () => fetchAndDisplay(input.value));
+
+const fetchAndDisplay = async (prompt: string) => {
+  console.log(prompt)
+  generatedSvg = await fetchIconsFromPrompt(prompt);
+  results.innerHTML = '';
+  generatedSvg.map((svg) => results.innerHTML += '<div class="w-full h-full">' + svg + '</div>');
+};
 </script>
 
 <style>
