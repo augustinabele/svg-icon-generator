@@ -1,4 +1,5 @@
 ---
+import SearchLoader from './SearchLoader.astro';
 export interface Props {}
 ---
 <div class="pt-8 flex items-center min-w-756px group">
@@ -41,6 +42,9 @@ export interface Props {}
   </button>
 </div>
 
+<div id="loader" class="hidden">
+  <SearchLoader/>
+</div>
 <div id="results" class="mt-8 grid grid-cols-4 gap-4">
 </div>
 
@@ -50,6 +54,7 @@ import { fetchIconsFromPrompt } from "../services/generate";
 const button = document.getElementById("button");
 const input = document.getElementById("search") as HTMLInputElement;
 const results = document.getElementById("results");
+const loader = document.getElementById("loader");
 var generatedSvg = [];
 
 input.addEventListener("keypress", function(event) {
@@ -62,8 +67,9 @@ input.addEventListener("keypress", function(event) {
 button.addEventListener("click", () => fetchAndDisplay(input.value));
 
 const fetchAndDisplay = async (prompt: string) => {
-  console.log(prompt)
+  loader.classList.remove("hidden");
   generatedSvg = await fetchIconsFromPrompt(prompt);
+  loader.classList.add("hidden");
   results.innerHTML = '';
   generatedSvg.map((url) => results.innerHTML += '<div class="w-full h-full"><img src="' + url + '"/></div>');
 };
