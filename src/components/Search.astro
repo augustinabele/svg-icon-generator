@@ -65,7 +65,7 @@ const fetchAndDisplay = async (prompt: string) => {
   console.log(prompt)
   generatedSvg = await fetchIconsFromPrompt(prompt);
   results.innerHTML = '';
-  generatedSvg.map((svg) => results.innerHTML += '<div class="w-full h-full">' + svg + '</div>');
+  generatedSvg.map((url) => results.innerHTML += '<div class="w-full h-full"><img src="' + url + '"/></div>');
 };
 </script>
 
