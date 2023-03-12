@@ -65,9 +65,9 @@ export interface Props {}
 	
   button.addEventListener("click", () => fetchAndDisplay(input.value));
 	
-	const fetchAndDisplay = (promt: string) => {
+	const fetchAndDisplay = async (promt: string) => {
 		results.innerHTML = '';
-		generatedSvg = fetchIconFromPrompt(input.value);
+		generatedSvg = await fetchIconFromPrompt(input.value);
 		generatedSvg.map((svg) => results.innerHTML += '<div class="w-full h-full">' + svg + '</div>');
 	};
 
