@@ -2,15 +2,18 @@
 import Layout from "../layouts/Layout.astro";
 import Card from "../components/Card.astro";
 import Search from "../components/Search.astro";
+
+import logo from "./public/guilty-logo.png";
 ---
 
 <Layout title="Welcome to Astro.">
-  <main class="font-mono flex flex-col">
-    <h1>Welcome to <span class="text-gradient">Guilty</span></h1>
-    <h2>The only Text-To-Svg generator</h2>
+  <main class="font-mono flex flex-col items-center">
+    <div class="h-64">
+      <img src={logo} alt="Guilty Logo" class="flex h-full object-contain" />
+    </div>
 
-		<Search />
-	
+    <Search />
+
     <ul role="list" class="link-card-grid mt-30">
       <Card
         href="https://astro.build/chat/"
