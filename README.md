@@ -3,7 +3,7 @@
 Paris Gen AI Hackathon
 
 ## Demo
-![svg-generator](https://user-images.githubusercontent.com/25684996/226215719-a9d5ad70-ce38-4371-a749-7c17e93612d1.png)
+![svg-generator](https://user-images.githubusercontent.com/25684996/226215828-843708e4-63f5-45dd-811e-a24da05db64c.png)
 
 
 ## Commands
